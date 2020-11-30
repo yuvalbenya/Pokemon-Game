@@ -8,7 +8,6 @@ public class NodeData implements node_data {
     double weight;
     geo_location location;
 
-
     public NodeData(){
         this.key = id++;
         this.location = new GeoLocation(0,0,0);
