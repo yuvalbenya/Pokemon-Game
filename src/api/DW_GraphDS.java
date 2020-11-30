@@ -73,7 +73,6 @@ public class DW_GraphDS implements directed_weighted_graph {
         if(Vertices.containsKey(src) && Vertices.containsKey(dest) && src != dest){
             if(!ExitEdges.get(src).containsKey(dest)) {Edgesize++;}
                 ExitEdges.get(src).put(dest, new EdgeData(src, dest, w));
-            System.out.println("the new edge is: "+w);
                 EntryEdges.get(dest).add(src);
         }
     }
@@ -82,7 +81,7 @@ public class DW_GraphDS implements directed_weighted_graph {
      * This method returns a pointer (shallow copy) for the
      * collection representing all the nodes in the graph.
      * Note: this method should run in O(1) time.
-     *
+     *kk
      * @return Collection<node_data>
      */
     @Override
