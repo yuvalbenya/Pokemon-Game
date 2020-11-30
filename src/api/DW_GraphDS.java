@@ -5,9 +5,9 @@ import org.w3c.dom.Node;
 import java.util.*;
 
 public class DW_GraphDS implements directed_weighted_graph {
-    HashMap<Integer,node_data> Vertices;
-    HashMap<Integer,HashMap<Integer,edge_data>> ExitEdges;
-    HashMap<Integer,HashSet<Integer>> EntryEdges;
+    HashMap<Integer,node_data> Vertices; // main graph
+    HashMap<Integer,HashMap<Integer,edge_data>> ExitEdges; // edges: node1==>node2 give: edge_data
+    HashMap<Integer,HashSet<Integer>> EntryEdges; //give edges node1==>node2
     int Edgesize,MC;
 
 
@@ -70,13 +70,12 @@ public class DW_GraphDS implements directed_weighted_graph {
      */
     @Override
     public void connect(int src, int dest, double w) {
-        if(!ExitEdges.get(src).containsKey(dest) && src != dest){
-                ExitEdges.get(src).put(dest, new EdgeData(src, dest, w));
-                EntryEdges.get(dest).add(src);
-                Edgesize++;
+        if(Vertices.containsKey(src) && Vertices.containsKey(dest) && src != dest){
+            if(!ExitEdges.get(src).containsKey(dest)) {Edgesize++;}
+            ExitEdges.get(src).put(dest, new EdgeData(src, dest, w));
+            EntryEdges.get(dest).add(src);
         }
     }
-
     /**
      * This method returns a pointer (shallow copy) for the
      * collection representing all the nodes in the graph.

@@ -10,7 +10,7 @@ public class NodeData implements node_data {
     geo_location location;
 
 
-    public NodeData(){
+    public  NodeData(){
         this.key = id++;
         this.location = new GeoLocation(0,0,0);
     }
