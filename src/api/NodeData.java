@@ -1,5 +1,4 @@
-package ex2;
-
+package api;
 import java.util.Locale;
 
 public class NodeData implements node_data {
@@ -8,7 +7,6 @@ public class NodeData implements node_data {
     String info;
     double weight;
     geo_location location;
-
 
     public NodeData(){
         this.key = id++;

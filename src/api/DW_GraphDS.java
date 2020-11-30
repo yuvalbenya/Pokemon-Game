@@ -1,4 +1,4 @@
-package ex2;
+package api;
 
 import org.w3c.dom.Node;
 
@@ -6,8 +6,8 @@ import java.util.*;
 
 public class DW_GraphDS implements directed_weighted_graph {
     HashMap<Integer,node_data> Vertices;
-    HashMap<Integer,HashMap<Integer,edge_data>> ExitEdges;
-    HashMap<Integer,HashSet<Integer>> EntryEdges;
+    HashMap<Integer,HashMap<Integer,edge_data>> ExitEdges;// all the edges that src is the key
+    HashMap<Integer,HashSet<Integer>> EntryEdges; // all the edges that dest is the key
     int Edgesize,MC;
 
 
@@ -70,10 +70,11 @@ public class DW_GraphDS implements directed_weighted_graph {
      */
     @Override
     public void connect(int src, int dest, double w) {
-        if(!ExitEdges.get(src).containsKey(dest) && src != dest){
+        if(Vertices.containsKey(src) && Vertices.containsKey(dest) && src != dest){
+            if(!ExitEdges.get(src).containsKey(dest)) {Edgesize++;}
                 ExitEdges.get(src).put(dest, new EdgeData(src, dest, w));
+            System.out.println("the new edge is: "+w);
                 EntryEdges.get(dest).add(src);
-                Edgesize++;
         }
     }
 
@@ -107,6 +108,7 @@ public class DW_GraphDS implements directed_weighted_graph {
            }
         }
         return EdgeCollection;
+      //  return this.ExitEdges.get(node_id).values();
     }
 
     /**
