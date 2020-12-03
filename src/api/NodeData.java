@@ -3,14 +3,21 @@ import java.util.Locale;
 
 public class NodeData implements node_data {
     static int id = 0;
-    int key,tag;
-    String info;
-    double weight;
-    geo_location location;
-
+     int tag,key;
+     String info;
+     double weight;
+     geo_location location;
+     public NodeData(int key){
+         this.key = key;
+         this.location = new GeoLocation(0, 0, 0);
+     }
+    public NodeData(int key , geo_location location){
+        this.key = key;
+        this.location = location;
+    }
     public NodeData(){
         this.key = id++;
-        this.location = new GeoLocation(0,0,0);
+        this.location = new GeoLocation(0, 0, 0);
     }
     /**
      * Returns the key (id) associated with this node.
@@ -104,7 +111,7 @@ public class NodeData implements node_data {
     public void setTag(int t) {
     this.tag = t;
     }
-    public class GeoLocation implements geo_location{
+    public static class GeoLocation implements geo_location{
         double x,y,z;
         public GeoLocation(double x,double y,double z){
             this.x = x;

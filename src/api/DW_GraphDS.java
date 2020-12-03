@@ -1,7 +1,9 @@
 package api;
 
+import com.google.gson.InstanceCreator;
 import org.w3c.dom.Node;
 
+import java.lang.reflect.Type;
 import java.util.*;
 
 public class DW_GraphDS implements directed_weighted_graph {
@@ -73,7 +75,6 @@ public class DW_GraphDS implements directed_weighted_graph {
         if(Vertices.containsKey(src) && Vertices.containsKey(dest) && src != dest){
             if(!ExitEdges.get(src).containsKey(dest)) {Edgesize++;}
                 ExitEdges.get(src).put(dest, new EdgeData(src, dest, w));
-            System.out.println("the new edge is: "+w);
                 EntryEdges.get(dest).add(src);
         }
     }
@@ -82,7 +83,7 @@ public class DW_GraphDS implements directed_weighted_graph {
      * This method returns a pointer (shallow copy) for the
      * collection representing all the nodes in the graph.
      * Note: this method should run in O(1) time.
-     *
+     *kk
      * @return Collection<node_data>
      */
     @Override
@@ -132,6 +133,7 @@ public class DW_GraphDS implements directed_weighted_graph {
         }
         return null;
     }
+
 
     /**
      * Deletes the edge from the graph,
@@ -192,7 +194,7 @@ public class DW_GraphDS implements directed_weighted_graph {
          src != dest;
 
     }
-    public class EdgeData implements edge_data{
+    public class EdgeData implements edge_data {
         int src,dest;
         double weight;
         int tag;
@@ -272,6 +274,8 @@ public class DW_GraphDS implements directed_weighted_graph {
         public void setTag(int t) {
         this.tag = t;
         }
+
+
     }
     public class EdgeLocation implements edge_location{
         edge_data edge;
