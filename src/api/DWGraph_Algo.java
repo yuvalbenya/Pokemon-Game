@@ -1,5 +1,5 @@
 package api;
-
+import gameClient.util.Point3D;
 import com.google.gson.*;
 
 import java.io.*;
@@ -237,7 +237,7 @@ public class DWGraph_Algo implements dw_graph_algorithms {
             System.out.println(json);
             for (JsonElement node: nodes){ //iterate to convert Json -> Nodes
                String[] pos = ((JsonObject) node).get("pos").getAsString().split(",");
-                geo_location location = new NodeData.GeoLocation(Double.parseDouble(pos[0]),Double.parseDouble(pos[1]),Double.parseDouble(pos[2]));
+                geo_location location = new Point3D(Double.parseDouble(pos[0]),Double.parseDouble(pos[1]),Double.parseDouble(pos[2]));
                 node_data NewNode = new NodeData(((JsonObject) node).get("id").getAsInt(),location);
                 g1.addNode(NewNode);
             }
